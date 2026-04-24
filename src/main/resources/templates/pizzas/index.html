@@ -7,9 +7,20 @@
     <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" th:rel="stylesheet">
 </head>
 <body>
-    <nav th:replace="fragments/navbar :: navbar('Index')"></nav>
+    <nav th:replace="fragments/navbar"></nav>
     <div class="container">
         <h1>Pizzas</h1>
+
+        <form class="mb-3" th:action="@{/pizzas}" method="get">
+
+            <input type="text"
+                name="keyword"
+                class="form-control"
+                th:value="${keyword}"
+                placeholder="Search pizza by name...">
+
+            <button class="btn btn-primary mt-2">Search</button>
+        </form>
 
         <section class="row" th:unless="${pizzas.isEmpty()}">
             <div class="col-12">

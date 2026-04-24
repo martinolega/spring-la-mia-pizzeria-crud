@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" th:rel="stylesheet">
+</head>
+<body>
+    <nav th:replace="fragments/navbar"></nav>
+
+    <div th:unless="${pizza} != null">
+        <p>Pizza not found.</p>
+    </div>
+
+    <div class="container" th:if="${pizza} != null">
+        <div th:object="${pizza}">
+            <h1 th:text="*{name}"></h1>
+            <p th:text="'Ingredients: ' + *{description}"></p>
+            <p th:text="'Price: ' + *{price}"></p>
+            <img th:src="${pizza.imageUrl}" alt="Pizza image" style="max-width: 300px;">
+        </div>
+
+        <!-- <p th:if="${pizzas.isEmpty()}">No pizzas found.</p> -->
+    </div>
+    <!--<div th:replace="~{fragments/resources :: scripts}"></div>-->
+</body>
+</html>
