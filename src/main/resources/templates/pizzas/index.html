@@ -9,7 +9,7 @@
 <body>
     <nav th:replace="fragments/navbar"></nav>
     <div class="container">
-        <h1>Pizzas</h1>
+        <h1 class="text-center">Pizzas</h1>
 
         <form class="mb-3" th:action="@{/pizzas}" method="get">
 
@@ -46,6 +46,8 @@
         </section>
 
         <p th:if="${pizzas.isEmpty()}">No pizzas found.</p>
+
+        <a th:href="@{/pizzas/create}" class="btn btn-success">Create a new Pizza</a>
     </div>
     <!--<div th:replace="~{fragments/resources :: scripts}"></div>-->
 </body>
